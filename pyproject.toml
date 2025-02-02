@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "horusgui"
-version = "0.3.19"
+version = "0.4.0"
 description = ""
 authors = ["Mark Jessop <vk5qi@rfhead.net>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.10"
 requests = "^2.24.0"
 crcmod = "^1.7"
-PyQt5 = "^5.15.0"
+PyQt6 = "^6.7.0"
 pyqtgraph = "^0.12.3"
 pyaudio = "^0.2.11"
 horusdemodlib = "^0.3.13"
