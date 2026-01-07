@@ -5,7 +5,7 @@ block_cipher = None
 
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
-             binaries=[('../horusdemodlib/build/src/libhorus.dylib','.')],
+             binaries=[],
              datas=[],
              hiddenimports=[],
              hookspath=[],
