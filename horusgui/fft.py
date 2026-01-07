@@ -50,7 +50,7 @@ class FFTProcess(object):
         """ Perform a FFT on the first NFFT samples in the sample buffer, then shift the buffer along """
 
         # Convert raw data to floats.
-        raw_data = np.fromstring(
+        raw_data = np.frombuffer(
             bytes(self.sample_buffer[: self.nfft * self.sample_width]), dtype=np.int16
         )
         raw_data = raw_data.astype(np.float64) / (2 ** 15)
