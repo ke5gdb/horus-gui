@@ -15,21 +15,6 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Checkout horusdemodlib
-          uses: actions/checkout@v4
-          with:
-            repository: "projecthorus/horusdemodlib"
-            ref: "master"
-            path: "horusdemodlib"
-
-        - name: Build horusdemodlib
-          run: |
-            cd horusdemodlib
-            mkdir build
-            cd build
-            cmake .. -G "MinGW Makefiles"
-            mingw32-make
-
         - uses: actions/setup-python@v5
           with:
             python-version: '3.11'
@@ -37,6 +22,10 @@ jobs:
 
         - name: Install pyAudio wheel
           run: pip install pyaudio
+
+        # For testing version only
+        - name: Install horusdemodlib testing version
+          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
 
         - name: Install other dependencies
           run: pip install -r requirements.txt
@@ -48,7 +37,6 @@ jobs:
           shell: bash
           run: |
             mkdir -p dist
-            cp horusdemodlib/build/src/libhorus.dll .
             cp "C:\Program Files\Git\mingw64\bin\libgcc_s_seh-1.dll" .
             cp "C:\Program Files\Git\mingw64\bin\libstdc++-6.dll" .
             cp "C:\Program Files\Git\mingw64\bin\libwinpthread-1.dll" .
@@ -71,21 +59,6 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Checkout horusdemodlib
-          uses: actions/checkout@v4
-          with:
-            repository: "projecthorus/horusdemodlib"
-            ref: "master"
-            path: "horusdemodlib"
-
-        - name: Build horusdemodlib
-          run: |
-            cd horusdemodlib
-            mkdir build
-            cd build
-            cmake ..
-            make
-
         - uses: actions/setup-python@v5
           with:
             python-version: '3.11'
@@ -97,6 +70,11 @@ jobs:
         - name: Install pyAudio wheel
           run: pip install pyaudio
 
+        # For testing version only
+        - name: Install horusdemodlib testing version
+          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
+
+
         - name: Install other dependencies
           run: pip install -r requirements.txt
 
@@ -107,7 +85,6 @@ jobs:
           shell: bash
           run: |
             mkdir -p dist
-            cp horusdemodlib/build/src/libhorus.dylib .
 
         - name: Run pyinstaller
           run: pyinstaller horus-gui_osx_runner.spec
@@ -131,21 +108,6 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Checkout horusdemodlib
-          uses: actions/checkout@v4
-          with:
-            repository: "projecthorus/horusdemodlib"
-            ref: "master"
-            path: "horusdemodlib"
-
-        - name: Build horusdemodlib
-          run: |
-            cd horusdemodlib
-            mkdir build
-            cd build
-            cmake ..
-            make
-
         - uses: actions/setup-python@v5
           with:
             python-version: '3.11'
@@ -157,6 +119,10 @@ jobs:
         - name: Install pyAudio wheel
           run: pip install pyaudio
 
+        # For testing version only
+        - name: Install horusdemodlib testing version
+          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
+
         - name: Install other dependencies
           run: pip install -r requirements.txt
 
@@ -167,7 +133,6 @@ jobs:
           shell: bash
           run: |
             mkdir -p dist
-            cp horusdemodlib/build/src/libhorus.dylib .
 
         - name: Run pyinstaller
           run: pyinstaller horus-gui_osx_runner.spec
