@@ -1134,6 +1134,10 @@ class MainWindow(QMainWindow):
                 # RTTY packets are provided as a string, and can be displayed directly
                 _packet = frame.data
             
+            # We now just inhibit trying to display anthing that fails CRC.
+            if frame.crc_pass == False:
+                return
+
             _decoded = None
 
             # Grab SNR.
