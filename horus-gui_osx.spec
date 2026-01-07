@@ -2,12 +2,12 @@
 
 block_cipher = None
 
-
+from PyInstaller.utils.hooks import collect_data_files
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
              binaries=[],
-             datas=[],
-             hiddenimports=[],
+             datas=collect_data_files("horusbinaryv3"),
+             hiddenimports=['pkg_resources.py2_warn', '_cffi_backend'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
