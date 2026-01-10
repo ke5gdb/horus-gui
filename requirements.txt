@@ -4,5 +4,5 @@ crcmod
 PyQt6
 pyqtgraph
 requests
-horusdemodlib>=0.4.0
+horusdemodlib>=0.5.0
 audioop-lts; python_version>='3.13'

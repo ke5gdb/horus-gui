@@ -4,6 +4,7 @@ Telemetry demodulator for the following modems in use by Project Horus
 * Horus Binary Modes (4FSK)
   * v1 - Legacy 22 byte mode, Golay(23,12) FEC
   * v2 - 32-byte mode, Golay(23,12) FEC
+  * v3 - 32/48/64/96/128-byte mode with ASN.1 encoding, Golay(23,12) FEC
 * RTTY (7N1, 7N2 and 8N2, standard [UKHAS sentences](https://ukhas.org.uk/communication:protocol) with CRC16 only)
 
 This project serves as a graphical front-end to [horusdemodlib](https://github.com/projecthorus/horusdemodlib/wiki) a Python/C library of telemetry demodulators based off the [codec2](https://github.com/drowe67/codec2) FSK modem. The core modem used in this library is very well tested, and performs in line with incoherent FSK demodulator theory. The RTTY decoder is approximately [2dB better](http://www.rowetel.com/?p=5906) than dl-fldigi, and the Horus Binary modem approximately 7 dB better again. The Horus Binary v2 mode provides some additional flexibility over the v1 mode, allowing the addition of custom telemetry fields.
@@ -44,17 +45,6 @@ Binary builds for some platforms are available on the releases page: https://git
 
 Please let me know if you have issues!
 
-### Build HorusDemodLib
-
-```console
-$ git clone https://github.com/projecthorus/horusdemodlib.git
-$ cd horusdemodlib && mkdir build && cd build
-$ cmake ..
-$ make
-$ sudo make install
-$ sudo ldconfig
-```
-
 ### Grab this Repo
 ```console
 $ git clone https://github.com/projecthorus/horus-gui.git
@@ -70,7 +60,7 @@ $ source venv/bin/activate
 (venv) $ pip install pip -U       (Optional - this updates pip)
 ```
 
-If not using a venv, you may need to replace `pip` with `pip3`, and `python` with `python3` below to ensure you are using Python3. Older linux distributions will likely have both Python 2.7 and Python 3 installed - this software only supports Python 3. On linux distros you may need to install `python3-venv`.
+If not using a venv, you may need to replace `pip` with `pip3`, and `python` with `python3` below to ensure you are using Python3. Older linux distributions will likely have both Python 2.7 and Python 3 installed - this software only supports Python 3.9 or newer. On linux distros you may need to install `python3-venv`.
 
 ### Install Python Dependencies
 ```console
@@ -126,14 +116,6 @@ $ (venv) python horus-gui.py
 As this repository is under regular development, you will likely need to update frequently. For those using the binary builds, this just means downloading a new file and running it. If you're running from source, this means updating both this repository, and horusdemodlib, on which it depends.
 
 ```console
-$ cd ~/horusdemodlib
-$ git pull
-$ rm -rf build
-$ cd horusdemodlib && mkdir build && cd build
-$ cmake ..
-$ make
-$ make install
-
 $ cd ~/horus-gui
 # git pull
 $ . venv/bin/activate  (if using a venv)
