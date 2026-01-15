@@ -86,7 +86,7 @@ jobs:
           run: |
             mkdir -p dist
 
-        - name: Make dummy file
+        - name: ake dummy file for use in appbundle
           shell: bash
           run: |
             touch dummy.file
@@ -138,6 +138,11 @@ jobs:
           shell: bash
           run: |
             mkdir -p dist
+
+        - name: Make dummy file for use in appbundle
+          shell: bash
+          run: |
+            touch dummy.file
 
         - name: Run pyinstaller
           run: pyinstaller horus-gui_osx_runner.spec
