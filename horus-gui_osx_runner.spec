@@ -3,10 +3,14 @@
 block_cipher = None
 
 from PyInstaller.utils.hooks import collect_data_files
+
+datas = collect_data_files("horusbinaryv3")
+datas += collect_data_files("horusdemodlib")
+
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
              binaries=[],
-             datas=collect_data_files("horusbinaryv3"),
+             datas=datas,
              hiddenimports=['pkg_resources.py2_warn', '_cffi_backend'],
              hookspath=[],
              runtime_hooks=[],
