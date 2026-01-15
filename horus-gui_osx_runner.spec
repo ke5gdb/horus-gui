@@ -6,7 +6,8 @@ from PyInstaller.utils.hooks import collect_data_files
 
 datas = collect_data_files("horusbinaryv3")
 datas += collect_data_files("horusdemodlib")
-datas += ('./dummy.file','Contents/Frameworks/horusdemodlib/')
+print("DATAS:" + str(datas))
+#datas += ('./dummy.file','Contents/Frameworks/horusdemodlib/')
 
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
