@@ -5,9 +5,7 @@ block_cipher = None
 from PyInstaller.utils.hooks import collect_data_files
 
 datas = collect_data_files("horusbinaryv3")
-datas += collect_data_files("horusdemodlib")
-print("DATAS:" + str(datas))
-#datas += ('./dummy.file','Contents/Frameworks/horusdemodlib/')
+datas += [('./dummy.file','horusdemodlib')]
 
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
