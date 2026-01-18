@@ -23,9 +23,8 @@ jobs:
         - name: Install pyAudio wheel
           run: pip install pyaudio
 
-        # For testing version only
-        - name: Install horusdemodlib testing version
-          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
+        - name: Install horusdemodlib
+          run: pip install horusdemodlib
 
         - name: Install other dependencies
           run: pip install -r requirements.txt
@@ -70,10 +69,8 @@ jobs:
         - name: Install pyAudio wheel
           run: pip install pyaudio
 
-        # For testing version only
-        - name: Install horusdemodlib testing version
-          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
-
+        - name: Install horusdemodlib
+          run: pip install horusdemodlib
 
         - name: Install other dependencies
           run: pip install -r requirements.txt
@@ -124,9 +121,8 @@ jobs:
         - name: Install pyAudio wheel
           run: pip install pyaudio
 
-        # For testing version only
-        - name: Install horusdemodlib testing version
-          run: pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ horusdemodlib
+        - name: Install horusdemodlib
+          run: pip install horusdemodlib
 
         - name: Install other dependencies
           run: pip install -r requirements.txt
