@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "horusgui"
-version = "0.4.2"
+version = "0.6.0"
 description = ""
 authors = ["Mark Jessop <vk5qi@rfhead.net>"]
 
@@ -11,7 +11,7 @@ crcmod = "^1.7"
 PyQt6 = "^6.7.0"
 pyqtgraph = "^0.12.3"
 pyaudio = "^0.2.11"
-horusdemodlib = ">=0.4.0"
+horusdemodlib = ">=0.6.0"
 
 [tool.poetry.dev-dependencies]
 
@@ -30,7 +30,7 @@ dependencies = [
     "PyQt6<7.0.0,>=6.9.0",
     "pyqtgraph<1.0.0,>=0.13.7",
     "pyaudio<1.0.0,>=0.2.14",
-    "horusdemodlib<1.0.0,>=0.3.15",
+    "horusdemodlib<1.0.0,>=0.6.0",
     "PyQt6",
     "audioop-lts; python_version>='3.13'",
     "crcmod",

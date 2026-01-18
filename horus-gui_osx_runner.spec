@@ -2,12 +2,22 @@
 
 block_cipher = None
 
+from PyInstaller.utils.hooks import collect_data_files
+
+datas = collect_data_files("horusbinaryv3")
+# For some reason the above line does add in the .asn1 file OK, but when the code starts
+# it looks for it in '/Contents/Frameworks/horusdemodlib/../horusbinaryv3/HorusBinaryV3.asn1'
+# which is very weird. 
+# The horusbinaryv3 dir does exist, but it doesn't make the horusdemodlib dir, so, we hack around that by
+# adding a dummy file so pyinstaller makes the /Contents/Frameworks/horusdemodlib directory
+# I hate this but it seems like it works.
+datas += [('./dummy.file','horusdemodlib')]
 
 a = Analysis(['horus-gui.py'],
              pathex=['.'],
-             binaries=[('libhorus.dylib','.')],
-             datas=[],
-             hiddenimports=[],
+             binaries=[],
+             datas=datas,
+             hiddenimports=['pkg_resources.py2_warn', '_cffi_backend'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],

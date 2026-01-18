@@ -404,10 +404,11 @@ class MainWindow(QMainWindow):
         w1_other.addWidget(self.widgets["loggingPathEntry"], 8, 1, 1, 1)
         w1_other.addWidget(self.widgets["selectLogDirButton"], 9, 0, 1, 2)
         w1_other.addWidget(self.widgets["otherHeaderLabel"], 10, 0, 1, 2)
-        w1_other.addWidget(self.widgets["inhibitCRCLabel"], 11, 0, 1, 1)
-        w1_other.addWidget(self.widgets["inhibitCRCSelector"], 11, 1, 1, 1)
-        w1_other.addWidget(self.widgets["fftSmoothingLabel"], 12, 0, 1, 1)
-        w1_other.addWidget(self.widgets["fftSmoothingSelector"], 12, 1, 1, 1)
+        # Inhibit this, need to remove it later
+        #w1_other.addWidget(self.widgets["inhibitCRCLabel"], 11, 0, 1, 1)
+        #w1_other.addWidget(self.widgets["inhibitCRCSelector"], 11, 1, 1, 1)
+        w1_other.addWidget(self.widgets["fftSmoothingLabel"], 11, 0, 1, 1)
+        w1_other.addWidget(self.widgets["fftSmoothingSelector"], 11, 1, 1, 1)
         w1_other.setRowStretch(13, 1)
         w1_other_widget.setLayout(w1_other)
 
@@ -1134,6 +1135,10 @@ class MainWindow(QMainWindow):
                 # RTTY packets are provided as a string, and can be displayed directly
                 _packet = frame.data
             
+            # We now just inhibit trying to display anthing that fails CRC.
+            if frame.crc_pass == False:
+                return
+
             _decoded = None
 
             # Grab SNR.

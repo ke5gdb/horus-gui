@@ -5,7 +5,7 @@ from horusdemodlib.demod import Mode
 
 # Modem paramers and defaults
 HORUS_MODEM_LIST = {
-    "Horus Binary v1/v2": {
+    "Horus Binary v1/v2/v3": {
         "id": Mode.BINARY_V1,
         "baud_rates": [50, 100, 300], # Note: 25 Baud removed until issues in underlying modem are fixed.
         "default_baud_rate": 100,
@@ -39,7 +39,7 @@ HORUS_MODEM_LIST = {
     },
 }
 
-DEFAULT_MODEM = "Horus Binary v1/v2"
+DEFAULT_MODEM = "Horus Binary v1/v2/v3"
 
 horusModem = None
 
