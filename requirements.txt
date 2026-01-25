@@ -1,6 +1,5 @@
 numpy
 pyaudio
-crcmod
 PyQt6
 pyqtgraph
 requests
