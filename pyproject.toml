@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "horusgui"
-version = "0.6.0"
+version = "0.6.1"
 description = ""
 authors = ["Mark Jessop <vk5qi@rfhead.net>"]
 
@@ -10,7 +10,7 @@ requests = "^2.24.0"
 PyQt6 = "^6.7.0"
 pyqtgraph = "^0.12.3"
 pyaudio = "^0.2.11"
-horusdemodlib = ">=0.6.0"
+horusdemodlib = ">=0.6.1"
 
 [tool.poetry.dev-dependencies]
 
@@ -31,14 +31,14 @@ dependencies = [
     "horusdemodlib<1.0.0,>=0.6.0",
     "PyQt6",
     "audioop-lts; python_version>='3.13'",
-    "horusdemodlib>=0.4.0",
+    "horusdemodlib>=0.6.1",
     "numpy",
     "pyaudio",
     "pyqtgraph",
     "requests",
 ]
 name = "horusgui"
-version = "0.4.2"
+version = "0.6.1"
 description = "Project Horus GUI Telemetry Decdoer"
 keywords = ["horus telemetry radio"]
 readme = "README.md"
