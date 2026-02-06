@@ -68,7 +68,7 @@ if 'Windows' in platform.system():
 else:
     POSITION_LABEL_FONT_SIZE = 16
 
-PEN_WIDTH=1
+PEN_WIDTH=2
 
 # Establish signals and worker for multi-threaded use
 class WorkerSignals(QObject):
@@ -155,6 +155,14 @@ class MainWindow(QMainWindow):
         # GUI LAYOUT - Gtk Style!
         self.setWindowTitle(f"Horus Telemetry GUI - v{__version__}")
         self.setWindowIcon(getHorusIcon())
+
+        palette = self.palette()
+        bg_color = palette.color(QPalette.ColorRole.Window)
+        fg_color   = palette.color(QPalette.ColorRole.WindowText)
+        axis_color = palette.color(QPalette.ColorRole.Text)
+        marker_color = palette.color(QPalette.ColorRole.Mid)
+        pg.setConfigOption('background', bg_color)
+        pg.setConfigOption('foreground', fg_color)
 
         # Left Column VBox
         left_column = QVBoxLayout()
@@ -502,33 +510,33 @@ class MainWindow(QMainWindow):
         self.widgets["spectrumPlot"] = pg.PlotWidget(title="Spectra")
         self.widgets["spectrumPlot"].setLabel("left", "Power (dB)")
         self.widgets["spectrumPlot"].setLabel("bottom", "Frequency (Hz)")
-        self.widgets["spectrumPlotData"] = self.widgets["spectrumPlot"].plot([0], pen=pg.mkPen(width=PEN_WIDTH))
+        self.widgets["spectrumPlotData"] = self.widgets["spectrumPlot"].plot([0], pen=pg.mkPen(axis_color, width=PEN_WIDTH))
 
         # Frequency Estiator Outputs
         self.widgets["estimatorLines"] = [
             pg.InfiniteLine(
                 pos=-1000,
-                pen=pg.mkPen(color="grey", width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
+                pen=pg.mkPen(marker_color, width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
                 label="F1",
-                labelOpts={'position':0.9}
+                labelOpts={'position':0.9, 'color':marker_color}
             ),
             pg.InfiniteLine(
                 pos=-1000,
-                pen=pg.mkPen(color="grey", width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
+                pen=pg.mkPen(marker_color, width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
                 label="F2",
-                labelOpts={'position':0.9}
+                labelOpts={'position':0.9, 'color':marker_color}
             ),
             pg.InfiniteLine(
                 pos=-1000,
-                pen=pg.mkPen(color="grey", width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
+                pen=pg.mkPen(marker_color, width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
                 label="F3",
-                labelOpts={'position':0.9}
+                labelOpts={'position':0.9, 'color':marker_color}
             ),
             pg.InfiniteLine(
                 pos=-1000,
-                pen=pg.mkPen(color="grey", width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
+                pen=pg.mkPen(marker_color, width=(PEN_WIDTH + 1), style=QtCore.Qt.PenStyle.DashLine),
                 label="F4",
-                labelOpts={'position':0.9}
+                labelOpts={'position':0.9, 'color':marker_color}
             ),
         ]
         for _line in self.widgets["estimatorLines"]:
@@ -589,7 +597,7 @@ class MainWindow(QMainWindow):
         self.widgets["snrPlotRange"] = [-10, 30]
         self.widgets["snrPlotTime"] = np.array([])
         self.widgets["snrPlotSNR"] = np.array([])
-        self.widgets["snrPlotData"] = self.widgets["snrPlot"].plot(self.widgets["snrPlotTime"], self.widgets["snrPlotSNR"], pen=pg.mkPen(width=PEN_WIDTH))
+        self.widgets["snrPlotData"] = self.widgets["snrPlot"].plot(self.widgets["snrPlotTime"], self.widgets["snrPlotSNR"], pen=pg.mkPen(axis_color, width=PEN_WIDTH + 1))
         w3_snr.addWidget(self.widgets["snrPlot"])
 
         w3_snr_groupbox.setLayout(w3_snr)
