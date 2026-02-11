@@ -32,7 +32,7 @@ dependencies = [
     "PyQt6",
     "audioop-lts; python_version>='3.13'",
     "horusdemodlib>=0.6.1",
-    "numpy",
+    "numpy<2.4.0",
     "pyaudio",
     "pyqtgraph",
     "requests",
